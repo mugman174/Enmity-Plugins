@@ -8,6 +8,7 @@ import {
 } from "enmity-api/commands";
 import { sendReply } from "enmity-api/clyde";
 import { showToast } from "enmity-api/toast";
+import { showDialog } from "enmity-api/dialog";
 
 const HelloWorld: Plugin = {
   name: "HelloWorld",
@@ -34,14 +35,46 @@ const HelloWorld: Plugin = {
         },
       ],
       execute: async function (args, message): Promise<void> {
+        sendReply(message.channel.id, "Hello, world!");
         if (args) {
           let toasttext = { content: args[0].value, source: 42069 };
           showToast(toasttext);
         }
-        sendReply(message.channel.id, "Hello, world!");
+      },
+    };
+
+    toasty = (ct) => showToast({ content: ct });
+    const dialog: Comamnd = {
+      id: "dialogue",
+      applicationId: EnmitySectionID,
+      name: "dialog",
+      displayName: "dialog",
+      description: "Display a dialog box",
+      displayDescription: "Display a dialog box",
+      type: ApplicationCommandType.Chat,
+      inputType: ApplicationCommandInputType.BuiltInText,
+      options: [
+        {
+          name: "message",
+          displayName: "message",
+          description: "Dialog message",
+          displayDescription: "Dialog message",
+          type: ApplicationCommandOptionType.String,
+          required: true,
+        },
+      ],
+      execute: async function (args, message): Promise<void> {
+        showDialog({
+          body: args[0].value,
+          title: "Prompt",
+          onCancel: () => toasty("Cancelled"),
+          onConfirm: () => toasty("Confirm"),
+          onSecondaryConfirm: () => toasty("Confirm2"),
+        });
       },
     };
     this.commands.push(h);
+    this.commands.push(dialog);
   },
 
   onStop() {
