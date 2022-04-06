@@ -7,7 +7,7 @@ import {
   ApplicationCommandType,
 } from "enmity-api/commands";
 import { sendReply } from "enmity-api/clyde";
-import { showToast, ToastMessage } from "enmity-api/toast";
+import { showToast } from "enmity-api/toast";
 
 const HelloWorld: Plugin = {
   name: "HelloWorld",
@@ -34,7 +34,7 @@ const HelloWorld: Plugin = {
         },
       ],
       execute: async function (args, message): Promise<void> {
-        toasttext: ToastMessage = { content: String(args), source: 42069 };
+        toasttext = { content: String(args), source: 42069 };
         showToast(toasttext);
         sendReply(message.channel.id, "Hello, world!");
       },
