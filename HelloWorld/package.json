@@ -1,9 +1,9 @@
 {
-  "name": "plugin-template",
-  "description": "Enmity plugin template",
+  "name": "Hello World",
+  "description": "Hello World plugin",
   "version": "1.0.0",
   "author": {
-    "name": "Zoey"
+    "name": "mugman"
   },
   "scripts": {
     "build": "rollup -c --configPlugin esbuild"
