@@ -34,8 +34,10 @@ const HelloWorld: Plugin = {
         },
       ],
       execute: async function (args, message): Promise<void> {
-        let toasttext = { content: String(args), source: 42069 };
-        showToast(toasttext);
+        if (args) {
+          let toasttext = { content: args[0].value, source: 42069 };
+          showToast(toasttext);
+        }
         sendReply(message.channel.id, "Hello, world!");
       },
     };
