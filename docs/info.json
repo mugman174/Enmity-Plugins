@@ -1,1 +1,1 @@
-{"Name":"mugman","Plugins":[{"Name":"HelloWorld","Description":"Hello World plugin","Author":"mugman","Version":"1.0.0"}]}
+{"Name":"mugman","Plugins":[{"Name":"HelloWorld","Description":"Hello World plugin","Author":"mugman","Version":"1.0.1"},{"Name":"UrbanDict","Description":"Find words in urban dictionary","Author":"mugman","Version":"1.0.0"}]}
