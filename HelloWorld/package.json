@@ -1,6 +1,6 @@
 {
-  "name": "silent-typing",
-  "description": "Type in chat without anyone knowing.",
+  "name": "plugin-template",
+  "description": "Enmity plugin template",
   "version": "1.0.0",
   "author": {
     "name": "Zoey"
