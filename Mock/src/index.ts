@@ -52,7 +52,6 @@ const MockPlugin: Plugin = {
       }
     );
     this.commands.push(mock_slash);
-    showToast({ content: "/mock" });
   },
 
   onStop() {
