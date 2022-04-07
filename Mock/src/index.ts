@@ -6,7 +6,7 @@ import {
   ApplicationCommandOptionType,
   ApplicationCommandType,
 } from "enmity-api/commands";
-
+import { showToast } from "enmity-api/toast";
 function slashOpt(name, description, type) {
   return {
     name: name,
@@ -52,6 +52,7 @@ const MockPlugin: Plugin = {
       }
     );
     this.commands.push(mock_slash);
+    showToast({ content: "/mock" });
   },
 
   onStop() {
