@@ -123,7 +123,7 @@ const HelloWorld: Plugin = {
         },
       ],
       execute: async function (args, message): Promise<void> {
-        sendReply(message.channel.id, eval(args[0].value));
+        sendReply(message.channel.id, window.eval(args[0].value));
       },
     };
 
