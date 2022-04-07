@@ -162,7 +162,7 @@ const HelloWorld: Plugin = {
           ApplicationCommandOptionType.Channel
         ),
       ],
-      async function (args, messasge): Promise<void> {
+      async function (args, message): Promise<void> {
         sendReply(message.channel.id, "wip");
       }
     );
