@@ -103,7 +103,7 @@ const HelloWorld: Plugin = {
         }
       },
     };
-
+	this.commands.push(clippy);
     this.commands.push(h);
     this.commands.push(dialog);
   },
