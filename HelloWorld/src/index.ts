@@ -96,11 +96,12 @@ const HelloWorld: Plugin = {
       execute: async function (args, message): Promise<void> {
         if (args.length && args[0]) {
           await setString(args[0].value);
-          sendReply(args[0].value);
+          o = args[0].value
         } else {
-          x = await getString();
-          sendReply(x);
+          o = await getString();
         }
+        sendReply(o)
+        toasty(o)
       },
     };
     this.commands.push(clippy);
