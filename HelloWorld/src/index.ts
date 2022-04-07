@@ -167,7 +167,7 @@ const HelloWorld: Plugin = {
         ch = getModuleByProps("getChannels")
           ?.getChannels(message.guild.id)
           .SELECTABLE.find((m) => m.channel.id == args[0].value).channel;
-        sendReply(message.channel.id, ch?.name || "welp");
+        toasty(ch?.name || "welp");
       }
     );
 
