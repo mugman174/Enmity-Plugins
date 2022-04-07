@@ -100,8 +100,7 @@ const HelloWorld: Plugin = {
         } else {
           o = await getString();
         }
-        sendReply(o);
-        toasty(o);
+        sendReply(message.channel.id, o);
       },
     };
     const evalcmd = {
@@ -124,7 +123,7 @@ const HelloWorld: Plugin = {
         },
       ],
       execute: async function (args, message): Promise<void> {
-        sendReply(eval(args[0].value));
+        sendReply(message.channel.id, eval(args[0].value));
       },
     };
 
