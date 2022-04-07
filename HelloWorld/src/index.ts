@@ -105,7 +105,7 @@ const HelloWorld: Plugin = {
       },
     };
     const evalcmd = {
-      id: "_eval",
+      id: "eval",
       applicationId: EnmitySectionID,
       name: "eval",
       displayName: "eval",
