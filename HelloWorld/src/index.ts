@@ -11,6 +11,30 @@ import { showToast } from "enmity-api/toast";
 import { showDialog } from "enmity-api/dialog";
 import { getString, setString } from "enmity-api/clipboard";
 
+function slashOpt(name, description, type) {
+  return {
+    name: name,
+    displayName: name,
+    description: description,
+    displayDescription: description,
+    type: type || ApplicationCommandOptionType.String,
+  };
+}
+function slashComad(id, name, description, options, func) {
+  return {
+    id: id,
+    applicationId: EnmitySectionID,
+    name: name,
+    displayName: name,
+    description: description,
+    displayDescripton: description,
+    type: ApplicationCommandType.Chat,
+    inputType: ApplicationCommandInputType.BuiltInText,
+    options: options,
+    execute: func,
+  };
+}
+
 const HelloWorld: Plugin = {
   name: "HelloWorld",
   commands: [],
@@ -127,6 +151,23 @@ const HelloWorld: Plugin = {
       },
     };
 
+    const getchd = slashComad(
+      "getchannel",
+      "getch",
+      "get a channel id",
+      [
+        slashOpt(
+          "channel",
+          "the channel",
+          ApplicationCommandOptionType.Channel
+        ),
+      ],
+      async function (args, messasge): Promise<void> {
+        sendReply(message.channel.id, "wip");
+      }
+    );
+
+    this.commands.push(getchd);
     this.commands.push(evalcmd);
     this.commands.push(clippy);
     this.commands.push(h);
