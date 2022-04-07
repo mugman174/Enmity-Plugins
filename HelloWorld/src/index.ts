@@ -164,8 +164,8 @@ const HelloWorld: Plugin = {
         ),
       ],
       async function (args, message): Promise<void> {
-        ch = getModuleByProps("getChannel")?.getChannel(args[0].value);
-        sendReply(message.channel.id, ch?.name);
+        ch = getModuleByProps("getChannels")?.getChannels(message.guild.id).SELECTABLE.find(m => m.id == args[0].value);
+        sendReply(message.channel.id, ch?.name || "welp");
       }
     );
 

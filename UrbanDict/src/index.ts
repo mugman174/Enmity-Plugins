@@ -6,6 +6,8 @@ import {
 } from "enmity-api/commands";
 import { get } from "enmity-api/rest";
 import { Plugin, registerPlugin } from "enmity-api/plugins";
+import { sendReply } from "enmity-api/clyde";
+import { showToast } from "enmity-api/toast";
 
 const UrbanDict: Plugin = {
   name: "UrbanDict",
@@ -50,5 +52,8 @@ const UrbanDict: Plugin = {
     this.commands = [];
   },
 };
-
-registerPlugin(UrbanDict);
+try {
+  registerPlugin(UrbanDict);
+} catch {
+  showToast({ content: "o deer urban dict failed to exist" });
+}
