@@ -10,6 +10,7 @@ import { sendReply } from "enmity-api/clyde";
 import { showToast } from "enmity-api/toast";
 import { showDialog } from "enmity-api/dialog";
 import { getString, setString } from "enmity-api/clipboard";
+import { getModuleByProps } from "enmity-api/module";
 
 function slashOpt(name, description, type) {
   return {
@@ -163,7 +164,8 @@ const HelloWorld: Plugin = {
         ),
       ],
       async function (args, message): Promise<void> {
-        sendReply(message.channel.id, args[0].value);
+        ch = getModuleByProps("getChannel")?.getChannel(args[0].value);
+        sendReply(message.channel.id, ch?.name);
       }
     );
 
