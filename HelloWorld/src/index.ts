@@ -9,6 +9,7 @@ import {
 import { sendReply } from "enmity-api/clyde";
 import { showToast } from "enmity-api/toast";
 import { showDialog } from "enmity-api/dialog";
+import { getString, setString } from "enmity-api/clipboard";
 
 const HelloWorld: Plugin = {
   name: "HelloWorld",
@@ -73,6 +74,36 @@ const HelloWorld: Plugin = {
         });
       },
     };
+    const clippy: Command = {
+      id: "clip",
+      applicationId: EnmitySectionID,
+      name: "clip",
+      displayName: "clip",
+      description: "Clipboard fun",
+      displayDescription: "Clipboard fun",
+      type: ApplicationCommandType.Chat,
+      inputType: ApplicationCommandInputType.BuiltInText,
+      options: [
+        {
+          name: "data",
+          displayName: "data",
+          description: "Leave empty to get clipboard, or set to set",
+          displayDescription: "Leave empty to get clipboard, or set to set",
+          type: ApplicationCommandOptionType.String,
+          required: false,
+        },
+      ],
+      execute: async function (args, message): Promise<void> {
+        if (args.length && args[0]) {
+          await setString(args[0].value);
+          sendReply(args[0].value);
+        } else {
+          x = await getString();
+          sendReply(x);
+        }
+      },
+    };
+
     this.commands.push(h);
     this.commands.push(dialog);
   },

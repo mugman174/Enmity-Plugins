@@ -1,7 +1,7 @@
 {
   "name": "Hello World",
   "description": "Hello World plugin",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "author": {
     "name": "mugman"
   },
@@ -20,8 +20,8 @@
     "rollup-plugin-esbuild": "^4.8.2"
   },
   "optionalDependencies": {
-    "esbuild-darwin-arm64": "^0.14.21",
     "esbuild-darwin-64": "^0.14.21",
+    "esbuild-darwin-arm64": "^0.14.21",
     "esbuild-linux-64": "^0.14.21",
     "esbuild-windows-64": "^0.14.21"
   },
