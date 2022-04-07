@@ -96,14 +96,39 @@ const HelloWorld: Plugin = {
       execute: async function (args, message): Promise<void> {
         if (args.length && args[0]) {
           await setString(args[0].value);
-          o = args[0].value
+          o = args[0].value;
         } else {
           o = await getString();
         }
-        sendReply(o)
-        toasty(o)
+        sendReply(o);
+        toasty(o);
       },
     };
+    const evalcmd = {
+      id: "_eval",
+      applicationId: EnmitySectionID,
+      name: "eval",
+      displayName: "eval",
+      description: "Enter some jaberscrep and run",
+      displayDescription: "Enter some javerscrept and run",
+      type: ApplicationCommandType.Chat,
+      inputType: ApplicationCommandInputType.BuiltInText,
+      options: [
+        {
+          name: "js",
+          displayName: "js",
+          description: "the code",
+          displayDescription: "the code",
+          type: ApplicationCommandOptionType.String,
+          required: true,
+        },
+      ],
+      execute: async function (args, message): Promise<void> {
+        sendReply(eval(args[0].value));
+      },
+    };
+
+    this.commands.push(evalcmd);
     this.commands.push(clippy);
     this.commands.push(h);
     this.commands.push(dialog);
