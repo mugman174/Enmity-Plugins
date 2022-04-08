@@ -42,7 +42,7 @@ const UrbanDict: Plugin = {
           required: false,
         },
       ],
-      execute: async (args, message) => {
+      execute: async function (args, message): Promise<void> {
         let word = args[0].value;
         let res = await get({
           url: `https://api.urbandictionary.com/v0/define?term=${word}`,
