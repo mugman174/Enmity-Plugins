@@ -43,10 +43,9 @@ const UrbanDict: Plugin = {
         },
       ],
       execute: async function (args, message): Promise<void> {
+        showToast({content: "Running"})
         let word = args[0].value;
-        let res = await get({
-          url: `https://api.urbandictionary.com/v0/define?term=${word}`,
-        });
+        let res = await get(`https://api.urbandictionary.com/v0/define?term=${word}`);
         sendReply(message.channel.id, JSON.parse(res.body).list[0]?.definition);
       },
     };
