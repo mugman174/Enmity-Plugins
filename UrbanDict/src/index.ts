@@ -38,11 +38,13 @@ const UrbanDict: Plugin = {
         },
       ],
       execute: async (args, message) => {
-        word = args[0].value;
-        let res = await get(
-          `https://api.urbandictionary.com/v0/define?term=${word}`
-        ).body;
-        sendReply(res.list[0]?.definition);
+        let word = args[0].value;
+        let res = (
+          await get({
+            url: `https://api.urbandictionary.com/v0/define?term=${word}`,
+          })
+        );
+        sendReply(message.channel.id, JSON.parse(res.body).list[0]?.definition);
       },
     };
     this.commands.push(command);
@@ -52,8 +54,4 @@ const UrbanDict: Plugin = {
     this.commands = [];
   },
 };
-try {
-  registerPlugin(UrbanDict);
-} catch {
-  showToast({ content: "o deer urban dict failed to exist" });
-}
+registerPlugin(UrbanDict);
