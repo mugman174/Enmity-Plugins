@@ -5,6 +5,7 @@ import {
   ApplicationCommandInputType,
   ApplicationCommandOptionType,
   ApplicationCommandType,
+  unregisterCommands
 } from "enmity-api/commands";
 import { showToast } from "enmity-api/toast";
 function slashOpt(name, description, type) {
@@ -17,6 +18,7 @@ function slashOpt(name, description, type) {
     required: true,
   };
 }
+
 function slashComad(id, name, description, options, func) {
   return {
     id: id,
@@ -37,6 +39,7 @@ const MockPlugin: Plugin = {
   commands: [],
 
   onStart() {
+    unregisterCommand("mock");
     const mock_slash = slashComad(
       "mock",
       "mock",

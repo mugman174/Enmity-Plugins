@@ -14,7 +14,7 @@ const UrbanDict: Plugin = {
   commands: [],
 
   onStart() {
-    command = {
+    const command = {
       name: "urban",
       displayName: "urban",
       description: "Searches urban dictionary for a word",
