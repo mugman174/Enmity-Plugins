@@ -1,4 +1,5 @@
 import {
+  Command,
   EnmitySectionID,
   ApplicationCommandInputType,
   ApplicationCommandOptionType,
@@ -14,11 +15,15 @@ const UrbanDict: Plugin = {
   commands: [],
 
   onStart() {
-    const command = {
+    const command: Command = {
+      id: "urban-dict",
+      applicationId: EnmitySectionID,
       name: "urban",
       displayName: "urban",
       description: "Searches urban dictionary for a word",
       displayDescription: "Searches urban dictionary for a word",
+      type: ApplicationCommandType.Chat,
+      inputType: ApplicationCommandInputType.BuiltInText,
       options: [
         {
           name: "word",
@@ -39,11 +44,9 @@ const UrbanDict: Plugin = {
       ],
       execute: async (args, message) => {
         let word = args[0].value;
-        let res = (
-          await get({
-            url: `https://api.urbandictionary.com/v0/define?term=${word}`,
-          })
-        );
+        let res = await get({
+          url: `https://api.urbandictionary.com/v0/define?term=${word}`,
+        });
         sendReply(message.channel.id, JSON.parse(res.body).list[0]?.definition);
       },
     };
