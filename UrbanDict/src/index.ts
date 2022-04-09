@@ -56,7 +56,7 @@ const UrbanDict: Plugin = {
           sendReply("Could not find that definition.");
           return {};
         }
-        definition = `Top definition for ${args[0].value}:\n\`\`\${definition}\n\`\`\`\nlink: ${link}`;
+        definition = `Top definition for ${args[0].value}:\n\`\`\`${definition}\n\`\`\`\nlink: ${link}`;
         if (args.length == 2 && args[1].value) {
           return { content: definition };
         } else {
