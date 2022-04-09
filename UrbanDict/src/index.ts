@@ -52,7 +52,16 @@ const UrbanDict: Plugin = {
           `https://api.urbandictionary.com/v0/define?term=${word}`
         );
         showToast({ content: String(res.status) });
-        sendReply(message.channel.id, res.body.list[0]?.definition);
+        let definition = res.body?.list[0]?.definition;
+        if (!definition) {
+          sendReply("Could not find that definition.");
+          return {};
+        }
+        if (args.len == 2 && args[1].value) {
+          return { content: definition };
+        } else {
+          sendReply(message.channel.id, res.body.list[0]?.definition);
+        }
       },
     };
     this.commands.push(command);
