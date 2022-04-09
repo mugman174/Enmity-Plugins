@@ -56,7 +56,7 @@ const UrbanDict: Plugin = {
           return {};
         }
         definition = `**Definition for ${args[0].value} on Urban Dictionary**\n\n${definition}`;
-        if (args.len == 2 && args[1].value) {
+        if (args.length == 2 && args[1].value) {
           showToast({ content: "Send" });
           return { content: definition };
         } else {
