@@ -46,11 +46,13 @@ const UrbanDict: Plugin = {
       ],
 
       execute: async function (args, message): Promise<void> {
-        showToast({ content: "Test successful" });
-        showToast({ content: args[0].value });
-        /*        let word = args[0].value;
-        let res = await get(`https://api.urbandictionary.com/v0/define?term=${word}`);
-        sendReply(message.channel.id, JSON.parse(res.body).list[0]?.definition); */
+        let word = args[0].value;
+        showToast({ content: word });
+        let res = await get(
+          `https://api.urbandictionary.com/v0/define?term=${word}`
+        );
+        showToast({ content: String(res.status) });
+        sendReply(message.channel.id, res.body.list[0]?.definition);
       },
     };
     this.commands.push(command);
