@@ -22,8 +22,10 @@ const UrbanDict: Plugin = {
       displayName: "urban",
       description: "Searches urban dictionary for a word",
       displayDescription: "Searches urban dictionary for a word",
+
       type: ApplicationCommandType.Chat,
       inputType: ApplicationCommandInputType.BuiltInText,
+
       options: [
         {
           name: "word",
@@ -42,11 +44,13 @@ const UrbanDict: Plugin = {
           required: false,
         },
       ],
+
       execute: async function (args, message): Promise<void> {
-        showToast({content: "Running"})
-        let word = args[0].value;
+        showToast({ content: "Test successful" });
+        showToast({ content: args[0].value });
+        /*        let word = args[0].value;
         let res = await get(`https://api.urbandictionary.com/v0/define?term=${word}`);
-        sendReply(message.channel.id, JSON.parse(res.body).list[0]?.definition);
+        sendReply(message.channel.id, JSON.parse(res.body).list[0]?.definition); */
       },
     };
     this.commands.push(command);
