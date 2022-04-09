@@ -50,12 +50,12 @@ const UrbanDict: Plugin = {
         let res = await get(
           `https://api.urbandictionary.com/v0/define?term=${word}`
         );
-        let definition = res.body?.list[0]?.definition;
-        let link = res.body?.list[0]?.permalink || "Unknown";
-        if (!definition) {
-          sendReply("Could not find that definition.");
+        if (!res.body?.list[0]) {
+          showToast("Urban: Could not find that definition.");
           return {};
         }
+        let definition = res.body?.list[0]?.definition;
+        let link = res.body?.list[0]?.permalink || "Unknown";
         definition = `Top definition for ${args[0].value}:\n\`\`\`${definition}\n\`\`\`\nlink: \<${link}\>`;
         if (args.length == 2 && args[1].value) {
           return { content: definition };
