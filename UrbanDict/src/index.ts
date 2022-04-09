@@ -47,17 +47,17 @@ const UrbanDict: Plugin = {
 
       execute: async function (args, message): Promise<void> {
         let word = args[0].value;
-        showToast({ content: word });
         let res = await get(
           `https://api.urbandictionary.com/v0/define?term=${word}`
         );
-        showToast({ content: String(res.status) });
         let definition = res.body?.list[0]?.definition;
         if (!definition) {
           sendReply("Could not find that definition.");
           return {};
         }
+        definition = `**Definition for ${args[0].value} on Urban Dictionary**\n\n${definition}`;
         if (args.len == 2 && args[1].value) {
+          showToast({ content: "Send" });
           return { content: definition };
         } else {
           sendReply(message.channel.id, res.body.list[0]?.definition);
