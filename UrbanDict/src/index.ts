@@ -51,16 +51,16 @@ const UrbanDict: Plugin = {
           `https://api.urbandictionary.com/v0/define?term=${word}`
         );
         let definition = res.body?.list[0]?.definition;
+        let link = res.body?.list[0]?.permalink || "Unknown";
         if (!definition) {
           sendReply("Could not find that definition.");
           return {};
         }
-        definition = `**Definition for ${args[0].value} on Urban Dictionary**\n\n${definition}`;
+        definition = `Top definition for ${args[0].value}:\n\`\`\${definition}\n\`\`\`\nlink: ${link}`;
         if (args.length == 2 && args[1].value) {
-          showToast({ content: "Send" });
           return { content: definition };
         } else {
-          sendReply(message.channel.id, res.body.list[0]?.definition);
+          sendReply(message.channel.id, definition);
         }
       },
     };
