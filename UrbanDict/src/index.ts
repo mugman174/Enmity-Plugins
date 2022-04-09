@@ -15,6 +15,7 @@ const UrbanDict: Plugin = {
   commands: [],
 
   onStart() {
+    const toasty = (msg) => showToast({ content: msg });
     const command: Command = {
       id: "urban-dict",
       applicationId: EnmitySectionID,
@@ -51,7 +52,7 @@ const UrbanDict: Plugin = {
           `https://api.urbandictionary.com/v0/define?term=${word}`
         );
         if (!res.body?.list[0]) {
-          showToast("Urban: Could not find that definition.");
+          toasty("Urban: Could not find that definition.");
           return {};
         }
         let definition = res.body.list[0]?.definition.replace(/\[.*\]/g, "");
