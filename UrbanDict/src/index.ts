@@ -53,7 +53,7 @@ const UrbanDict: Plugin = {
         let definition = res.body?.list[0]?.definition;
         let link = res.body?.list[0]?.permalink || "Unknown";
         if (!definition) {
-          sendReply("Could not find that definition.");
+          sendReply(message.channel.id, "Could not find that definition.");
           return {};
         }
         definition = `Top definition for ${args[0].value}:\n\`\`\`${definition}\n\`\`\`\nlink: <${link}>`;
