@@ -53,8 +53,26 @@ const UserInfo: Plugin = {
         ),
       ],
       async function (args, message) {
-        user = args[0].value;
-        showToast({ content: user });
+        user = getUser(args[0].value);
+        showToast({ content: user.username });
+        embeds = [
+          {
+            title: user.username,
+            fields: [
+              {
+                name: "Information",
+                value: `Mention: <@${user.id}>\nUser ID: ${user.id}`,
+                inline: true,
+              },
+              { inline: true, name: "Details", value: `Hypesquad: TBD` },
+              {
+                inline: true,
+                name: "Dates",
+                value: `Account Creation Date: no`, //<t:${user.createdTimestamp}>`,
+              },
+            ],
+          },
+        ];
       }
     );
     this.commands.push(uinfo);
