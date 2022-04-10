@@ -45,7 +45,7 @@ const UrbanDict: Plugin = {
         },
       ],
 
-      execute: async function (args, message): Promise<void> {
+      execute: async function (args, message) {
         let word = args[0].value;
         let res = await get(
           `https://api.urbandictionary.com/v0/define?term=${word}`
