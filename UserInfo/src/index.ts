@@ -7,7 +7,7 @@ import {
   ApplicationCommandType,
   unregisterCommands,
 } from "enmity-api/commands";
-import { showToast } from "enmity-api/toast";
+import { sendReply } from "enmity-api/clyde";
 import { getUser } from "enmity-api/users";
 
 function slashOpt(name, description, type) {
@@ -28,7 +28,7 @@ function slashComad(id, name, description, options, func): Command {
     name: name,
     displayName: name,
     description: description,
-    displayDescripton: description,
+    displayDescription: description,
     type: ApplicationCommandType.Chat,
     inputType: ApplicationCommandInputType.BuiltInText,
     options: options,
@@ -53,9 +53,8 @@ const UserInfo: Plugin = {
         ),
       ],
       async function (args, message) {
-        user = getUser(args[0].value);
-        showToast({ content: user.username });
-        embeds = [
+        let user = await getUser(args[0].value);
+        let embeds = [
           {
             title: user.username,
             fields: [
@@ -73,6 +72,7 @@ const UserInfo: Plugin = {
             ],
           },
         ];
+        sendReply(message.id, { embeds });
       }
     );
     this.commands.push(uinfo);
