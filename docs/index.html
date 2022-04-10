@@ -15,24 +15,6 @@
     <hr />
 
     <article>
-  <h2>HelloWorld</h2>
-  <p>1.0.7</p>
-  <blockquote>
-    <p>Hello World plugin</p>
-  </blockquote>
-  <button data-name="HelloWorld">
-    Install plugin
-  </button>
-</article><hr /><article>
-  <h2>Mock</h2>
-  <p>1.0.0</p>
-  <blockquote>
-    <p>MaKe yOuR MeSsAgEs lIkE ThIs</p>
-  </blockquote>
-  <button data-name="Mock">
-    Install plugin
-  </button>
-</article><hr /><article>
   <h2>UrbanDict</h2>
   <p>1.0.0</p>
   <blockquote>
@@ -42,12 +24,12 @@
     Install plugin
   </button>
 </article><hr /><article>
-  <h2>sus</h2>
-  <p>1.0.0</p>
+  <h2>UserInfo</h2>
+  <p>0.0.1</p>
   <blockquote>
-    <p>Does sus thing - may crash discord idk</p>
+    <p>Enmity plugin template</p>
   </blockquote>
-  <button data-name="sus">
+  <button data-name="UserInfo">
     Install plugin
   </button>
 </article>
@@ -60,7 +42,7 @@
 
       buttons.forEach(button => {
         button.onclick = () => {
-          location.href = `com.hammerandchisel.discord://enmity?id=-1&command=install-plugin&params=https://raw.githubusercontent.com/mugman174/Enmity-Plugins/main/docs/plugins/${button.dataset.name}.js`
+          location.href = `com.hammerandchisel.discord://enmity?id=-1&command=install-plugin&params=https://mugman.catvibers.me/Enmity-Plugins/plugins/${button.dataset.name}.js`
         };
       });      
     </script>
