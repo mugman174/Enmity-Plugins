@@ -8,6 +8,8 @@ import {
   unregisterCommands,
 } from "enmity-api/commands";
 import { showToast } from "enmity-api/toast";
+import { getUser } from "enmity-api/users";
+
 function slashOpt(name, description, type) {
   return {
     name: name,
@@ -51,7 +53,8 @@ const UserInfo: Plugin = {
         ),
       ],
       async function (args, message) {
-        showToast(args[0].value);
+        user = args[0].value;
+        showToast({ content: user });
       }
     );
     this.commands.push(uinfo);
