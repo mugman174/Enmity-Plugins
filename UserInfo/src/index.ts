@@ -72,7 +72,7 @@ const UserInfo: Plugin = {
             ],
           },
         ];
-        sendReply(message.id, { embeds });
+        sendReply(message.channel.id, { embeds });
       }
     );
     this.commands.push(uinfo);
