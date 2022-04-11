@@ -43,7 +43,9 @@ const wttr: Plugin = {
     this.commands.push(command);
   },
 
-  onStop() {},
+  onStop() {
+    this.commands = [];
+  },
 };
 
 registerPlugin(wttr);
