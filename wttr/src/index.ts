@@ -62,7 +62,7 @@ const wttr: Plugin = {
           loc = args[0].value;
         }
         let url = `https://wttr.in/${loc}.png`;
-        if (args.find((o) => o.name == "detailed")?.value) {
+        if (!args.find((o) => o.name == "detailed")?.value) {
           url = url + "?0";
         }
         let s = await getImageSize(url);
