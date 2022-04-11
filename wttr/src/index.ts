@@ -45,11 +45,23 @@ const wttr: Plugin = {
           description: "Location",
           displayDescription: "Location",
           type: ApplicationCommandOptionType.String,
-          required: true,
+          required: false,
+        },
+        {
+          name: "detailed",
+          displayName: "detailed",
+          description: "Detailed View",
+          displayDescription: "Detailed View (default: off)",
+          type: ApplicationCommandOptionType.String,
+          required: false,
         },
       ],
       execute: async function (args, message): Promise<void> {
-        let url = `https://wttr.in/${args[0].value}.png`;
+        let loc = args[0]?.value || "";
+        let url = `https://wttr.in/${loc}.png`;
+        if (!args[1]?.value) {
+          url = url + "?0";
+        }
         let s = await getImageSize(url);
         sendReply(message.channel.id, `${s.width}, ${s.height}`);
         let embeds = [
