@@ -38,8 +38,8 @@ const wttr: Plugin = {
           {
             image: {
               url: `https://wttr.in/${args[0].value}.png`,
-              height: 2048,
-              width: 2048,
+              height: 9999,
+              width: 9999,
             },
           },
         ];
