@@ -61,7 +61,6 @@ const wttr: Plugin = {
         if (args[0]?.name == "location") {
           loc = args[0].value;
         }
-        sendReply(message.channel.id, loc + String(args[0]?.value));
         let url = `https://wttr.in/${loc}.png`;
         if (!args[1]?.value) {
           url = url + "?0";
