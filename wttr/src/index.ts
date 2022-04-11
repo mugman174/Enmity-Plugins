@@ -8,6 +8,21 @@ import {
 //import { get } from "enmity-api/rest";
 import { Plugin, registerPlugin } from "enmity-api/plugins";
 import { sendReply } from "enmity-api/clyde";
+import { Image } from "enmity-api/react";
+
+async function getImageSize(file: string): Promise<any> {
+  return new Promise((resolve, reject) => {
+    Image.getSize(
+      file,
+      (width: number, height: number) => {
+        resolve({ width, height });
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
 
 const wttr: Plugin = {
   name: "wttr",
@@ -34,12 +49,14 @@ const wttr: Plugin = {
         },
       ],
       execute: async function (args, message): Promise<void> {
+        let url = `https://wttr.in/${args[0].value}.png`;
+        let s = await getImageSize(url);
         let embeds = [
           {
             image: {
-              url: `https://wttr.in/${args[0].value}.png`,
-              height: 9999,
-              width: 9999,
+              url,
+              height: s.height,
+              width: s.width,
             },
           },
         ];
