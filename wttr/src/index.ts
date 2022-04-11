@@ -52,7 +52,7 @@ const wttr: Plugin = {
           displayName: "detailed",
           description: "Detailed View",
           displayDescription: "Detailed View (default: off)",
-          type: ApplicationCommandOptionType.String,
+          type: ApplicationCommandOptionType.Boolean,
           required: false,
         },
       ],
