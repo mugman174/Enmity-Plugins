@@ -35,7 +35,13 @@ const wttr: Plugin = {
       ],
       execute: async function (args, message): Promise<void> {
         let embeds = [
-          { image: { url: `https://wttr.in/${args[0].value}.png` } },
+          {
+            image: {
+              url: `https://wttr.in/${args[0].value}.png`,
+              height: 2048,
+              width: 2048,
+            },
+          },
         ];
         sendReply(message.channel.id, { embeds });
       },
