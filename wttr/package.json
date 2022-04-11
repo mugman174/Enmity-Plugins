@@ -1,7 +1,7 @@
 {
   "name": "wttr",
   "description": "Weather in Discord",
-  "version": "0.1.0",
+  "version": "0.8.0",
   "author": {
     "name":"mugman"
   },
