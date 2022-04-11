@@ -51,6 +51,7 @@ const wttr: Plugin = {
       execute: async function (args, message): Promise<void> {
         let url = `https://wttr.in/${args[0].value}.png`;
         let s = await getImageSize(url);
+        sendReply(message.channel.id, `${s.width}, ${s.height}`);
         let embeds = [
           {
             image: {
