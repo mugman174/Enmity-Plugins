@@ -40,6 +40,7 @@ const wttr: Plugin = {
         sendReply(message.channel.id, { embeds });
       },
     };
+    this.commands.push(command);
   },
 
   onStop() {},
