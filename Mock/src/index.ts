@@ -5,7 +5,7 @@ import {
   ApplicationCommandInputType,
   ApplicationCommandOptionType,
   ApplicationCommandType,
-  unregisterCommands
+  unregisterCommands,
 } from "enmity-api/commands";
 import { showToast } from "enmity-api/toast";
 function slashOpt(name, description, type) {
@@ -46,7 +46,7 @@ const MockPlugin: Plugin = {
       "MaKe yOuR TeXt lIkE ThIs",
       [slashOpt("text", "The text to mock-ify")],
       async function (args, message): Promise<void> {
-        input = args[0].value;
+        let input = args[0].value;
         for (i = 0; i < input.length; i += 2) {
           input =
             input.substr(0, i) + input[i].toUpperCase() + input.substr(i + 1);

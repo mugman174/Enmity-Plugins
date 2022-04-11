@@ -3,7 +3,7 @@
   "description": "MaKe yOuR MeSsAgEs lIkE ThIs",
   "version": "1.0.0",
   "author": {
-    "name": "Zoey"
+    "name": "mugman"
   },
   "scripts": {
     "build": "rollup -c --configPlugin esbuild"
