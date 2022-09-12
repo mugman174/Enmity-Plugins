@@ -3,13 +3,14 @@
   "description": "Weather in Discord",
   "version": "1.0.0",
   "author": {
-    "name":"mugman"
+    "name": "mugman"
   },
   "scripts": {
     "build": "rollup -c --configPlugin esbuild"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@types/node": "^17.0.5",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
@@ -20,12 +21,12 @@
     "rollup-plugin-esbuild": "^4.8.2"
   },
   "optionalDependencies": {
-    "esbuild-darwin-arm64": "^0.14.21",
     "esbuild-darwin-64": "^0.14.21",
+    "esbuild-darwin-arm64": "^0.14.21",
     "esbuild-linux-64": "^0.14.21",
     "esbuild-windows-64": "^0.14.21"
   },
   "dependencies": {
-    "enmity-api": "github:enmity-mod/enmity-api"
+    "enmity": "*"
   }
 }
