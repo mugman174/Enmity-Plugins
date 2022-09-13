@@ -51,7 +51,7 @@ const command: Command = {
     let cover = args.find((o) => o.name == "cover").value;
     let password = args.find((o) => o.name == "password")?.value || "password";
     let res = await REST.post({
-      url: `https://invisiblechatapi.hubertmoszkarel.repl.co`,
+      url: `https://invis.mugman.ga`,
       body: {
         type: "hide",
         password: password,

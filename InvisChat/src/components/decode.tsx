@@ -41,7 +41,7 @@ const dcommand: Command = {
     let msg = args.find((o) => o.name == "text").value;
     let password = args.find((o) => o.name == "password")?.value || "password";
     let res = await REST.post({
-      url: `https://invisiblechatapi.hubertmoszkarel.repl.co`,
+      url: `https://invis.mugman.ga`,
       body: {
         type: "reveal",
         password: password,
