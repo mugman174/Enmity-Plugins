@@ -1,0 +1,11 @@
+{
+   "name": "InvisChat",
+   "version": "0.5",
+   "description": "Hide secret messages within normal messages",
+   "authors": [
+      {
+         "name": "mugman",
+         "id": "990032448115073064"
+      }
+   ]
+}
