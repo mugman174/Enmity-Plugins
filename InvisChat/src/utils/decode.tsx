@@ -2,7 +2,7 @@ import { REST } from "enmity/metro/common";
 
 async function decoder(text, password) {
   let res = await REST.post({
-    url: `https://invis.mugman.ga`,
+    url: `https://invis.mugman.tech`,
     body: {
       type: "reveal",
       password: password || "password",
