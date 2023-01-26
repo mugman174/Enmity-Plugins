@@ -1,14 +1,13 @@
 import {
   Command,
-  EnmitySectionID,
   ApplicationCommandInputType,
   ApplicationCommandOptionType,
   ApplicationCommandType,
-} from "enmity-api/commands";
-//import { get } from "enmity-api/rest";
-import { Plugin, registerPlugin } from "enmity-api/plugins";
-import { sendReply } from "enmity-api/clyde";
-import { Image } from "enmity-api/react";
+} from "enmity/api/commands";
+import { get } from "enmity/metro/common/REST";
+import { Plugin, registerPlugin } from "enmity/managers/plugins";
+import { sendReply } from "enmity/api/clyde";
+import { Image } from "enmity/components";
 
 async function getImageSize(file: string): Promise<any> {
   return new Promise((resolve, reject) => {
@@ -31,13 +30,16 @@ const wttr: Plugin = {
   onStart() {
     const command: Command = {
       id: "wttr",
-      applicationId: EnmitySectionID,
+
       name: "wttr",
       displayName: "wttr",
+
       description: "Get the weather",
       displayDescription: "Get the weather",
+
       type: ApplicationCommandType.Chat,
       inputType: ApplicationCommandInputType.BuiltInText,
+
       options: [
         {
           name: "location",
@@ -57,25 +59,30 @@ const wttr: Plugin = {
         },
       ],
       execute: async function (args, message): Promise<void> {
-        let loc = "";
-        if (args[0]?.name == "location") {
-          loc = args[0].value;
-        }
-        let url = `https://wttr.in/${loc}.png`;
-        if (!args.find((o) => o.name == "detailed")?.value) {
-          url = url + "?0";
-        }
-        let s = await getImageSize(url);
-        let embeds = [
-          {
-            image: {
-              url,
-              height: s.height,
-              width: s.width,
+        try {
+          let loc = "";
+          if (args[0]?.name == "location") {
+            loc = args[0].value;
+          }
+          let url = `https://wttr.in/${loc}.png`;
+          if (!args.find((o) => o.name == "detailed")?.value) {
+            url = url + "?0";
+          }
+          let s = await getImageSize(url);
+          let embeds = [
+            {
+              image: {
+                url,
+                height: s.height,
+                width: s.width,
+              },
             },
-          },
-        ];
-        sendReply(message.channel.id, { embeds });
+          ];
+          sendReply(message.channel.id, { embeds });
+        } catch (e) {
+          alert(e);
+          console.log(e);
+        }
       },
     };
     this.commands.push(command);
